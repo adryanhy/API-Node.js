@@ -1,12 +1,13 @@
 # API-Node.js
 
-##Pré-requisitos
+## Pré-requisitos
 - Node.js instalado
 - MongoDB instalado e em execução
 - Dependências adicionais
 
 ## Instalação
-1) Clone the repository, instale node packages e verifique as rotas localmente
+
+1) Clone the repository, instale node packages e verifique as rotas localmente:
 //local
 git clone [https://github.com/adryanhy/API-Node.js]
 cd API-Node.js
