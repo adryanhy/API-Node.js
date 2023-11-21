@@ -7,7 +7,7 @@
 
 ## Instalação
 
-### 1) Clone the repository, instale node packages e verifique as rotas localmente:
+### 1) Clone o repositorio, instale node packages e verifique as rotas localmente:
 ```
 //local
 git clone [https://github.com/adryanhy/API-Node.js]
