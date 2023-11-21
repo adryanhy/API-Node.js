@@ -1,6 +1,6 @@
 import express from "express";
 import connectDB from "./config/dbConnect.js";
-import livro from "./models/Livro.js"
+import routes from "./routes/index.js";
 
 const conexao = await connectDB();
 
@@ -13,26 +13,15 @@ conexao.once("open", ()=>{
 })
 
 const app = express();
-app.use(express.json());
-
-
-app.get("/", (req, res) => {
-    res.status(200).send("Curso de Node.js");
-});
-
-app.get("/mangas", async (req, res) =>{
-    //chamando o model
-    const listaMangas = await livro.find({});
-    res.status(200).json(listaMangas);
-});
+routes(app);
 
 app.get("/mangas/:id", (req, res) => {
     const index = buscaLivro(req.params.id);
     res.status(200).json(mangas[index]);
 })
 
-app.post("/mangas", (req, res) =>{
-    mangas.push(req.body);
+ app.post("/mangas", (req, res) =>{
+     mangas.push(req.body);
     //codigo 201 (registro criado)
     res.status(201).send("Manga cadastrado com sucesso!")
 });
