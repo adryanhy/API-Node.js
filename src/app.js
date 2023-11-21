@@ -1,5 +1,6 @@
 import express from "express";
 import connectDB from "./config/dbConnect.js";
+import livro from "./models/Livro.js"
 
 const conexao = await connectDB();
 
@@ -14,29 +15,15 @@ conexao.once("open", ()=>{
 const app = express();
 app.use(express.json());
 
-const mangas = [
-    {
-        id: 1,
-        titulo: "Jujutsu Kaisen"
-    },
-    {
-        id: 2,
-        titulo: "Boku no Hero"
-    }
-]
-
-function buscaLivro(id){
-    return mangas.findIndex(manga => {
-        return manga.id === Number(id);
-    })
-}
 
 app.get("/", (req, res) => {
     res.status(200).send("Curso de Node.js");
 });
 
-app.get("/mangas", (req, res) =>{
-    res.status(200).json(mangas);
+app.get("/mangas", async (req, res) =>{
+    //chamando o model
+    const listaMangas = await livro.find({});
+    res.status(200).json(listaMangas);
 });
 
 app.get("/mangas/:id", (req, res) => {
