@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Consumir API</title>
+  <script src="../public/script.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h1>Mangás</h1>
+  <ul id="mangas"></ul>
+  <script>
+    const axios = require("axios");
+
+    const getMangas = async () => {
+      const response = await axios.get("/mangas");
+      const mangas = response.data;
+
+      const ul = document.querySelector("#manga");
+
+      for (const manga of mangas) {
+        const li = document.createElement("li");
+        li.textContent = manga.title;
+        ul.appendChild(li);
+      }
+    };
+
+    getBooks();
+  </script>
+</body>
+</html>
